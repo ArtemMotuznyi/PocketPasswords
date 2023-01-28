@@ -1,6 +1,7 @@
 package com.pocketpasswords.passwordgeneratorlib.api
 
 import com.pocketpasswords.passwordgeneratorlib.api.model.Password
+import com.pocketpasswords.passwordgeneratorlib.internal.DefaultRule
 import com.pocketpasswords.passwordgeneratorlib.internal.Generator
 
 interface PasswordGenerator {

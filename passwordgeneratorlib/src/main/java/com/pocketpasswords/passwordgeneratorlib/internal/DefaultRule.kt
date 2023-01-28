@@ -1,6 +1,8 @@
-package com.pocketpasswords.passwordgeneratorlib.api
+package com.pocketpasswords.passwordgeneratorlib.internal
 
-enum class DefaultRule(override val ruleValues: CharArray) : PasswordGenerationRule {
+import com.pocketpasswords.passwordgeneratorlib.api.PasswordGenerationRule
+
+internal enum class DefaultRule(override val ruleValues: CharArray) : PasswordGenerationRule {
     SPECIFIC_SYMBOLS(
         charArrayOf(
             '!', '"', '#', '$', '%', '&', '\'', '(', ')', '*',
