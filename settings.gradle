@@ -15,4 +15,4 @@ dependencyResolutionManagement {
 rootProject.name = "PocketPasswords"
 include ':app'
 include ':feature:generator'
-include ':passwordgenerator_lib'
+include ':passwordgeneratorlib'

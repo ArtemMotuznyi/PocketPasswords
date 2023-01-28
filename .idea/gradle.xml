@@ -14,7 +14,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/feature" />
             <option value="$PROJECT_DIR$/feature/generator" />
-            <option value="$PROJECT_DIR$/passwordgenerator_lib" />
+            <option value="$PROJECT_DIR$/passwordgeneratorlib" />
           </set>
         </option>
       </GradleProjectSettings>
