@@ -16,3 +16,4 @@ rootProject.name = "PocketPasswords"
 include ':app'
 include ':feature:generator'
 include ':passwordgeneratorlib'
+include ':core:presentation'

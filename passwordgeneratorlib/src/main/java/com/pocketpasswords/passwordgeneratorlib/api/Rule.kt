@@ -1,8 +1,21 @@
-package com.pocketpasswords.passwordgeneratorlib.internal
+package com.pocketpasswords.passwordgeneratorlib.api
 
-import com.pocketpasswords.passwordgeneratorlib.api.PasswordGenerationRule
+sealed interface Rule {
 
-internal enum class DefaultRule(override val ruleValues: CharArray) : PasswordGenerationRule {
+    class LengthRule(val length: Int) : Rule
+
+    interface CharRule : Rule {
+        val ruleValues: CharArray
+    }
+
+    companion object {
+        private val DEFAULT_MIN_LENGTH = 8
+        private val DEFAULT_MAX_LENGTH = 64
+    }
+
+}
+
+enum class DefaultCharRule(override val ruleValues: CharArray) : Rule.CharRule {
     SPECIFIC_SYMBOLS(
         charArrayOf(
             '!', '"', '#', '$', '%', '&', '\'', '(', ')', '*',
@@ -25,3 +38,4 @@ internal enum class DefaultRule(override val ruleValues: CharArray) : PasswordGe
     NUMBERS(charArrayOf('1', '2', '3', '4', '5', '6', '7', '8', '9', '0')),
     SPACE(charArrayOf(' '))
 }
+
