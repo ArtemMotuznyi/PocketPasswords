@@ -13,9 +13,13 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.artemmotuznyi.pocketpasswords.ui.theme.PocketPasswordsTheme
-import kotlinx.coroutines.flow.MutableStateFlow
+import com.pocketpasswords.passwordgeneratorlib.api.DefaultGenerator
 
 class MainActivity : ComponentActivity() {
+
+    val generator = DefaultGenerator().apply {
+        setLength(12)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +30,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    DefaultPreview()
+                    DefaultPreview(generator)
                 }
             }
         }
@@ -34,38 +38,26 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(count: Int) {
-    val test = remember {
-        mutableStateOf(count)
-    }
-    val test2 = 2
-    val res = test2 + test.value
-
-    val tesor = remember {
-        mutableStateOf(0)
+fun Greeting(generator: DefaultGenerator) {
+    val newPassword = remember {
+        mutableStateOf(generator.generate().password)
     }
     Column {
-        Text(text = "Hello ${res}, ${tesor.value}!")
+        Text(text = "Hello")
+        Text(text = newPassword.value)
 
         Button(
             onClick = {
-                test.value = ++test.value
+                newPassword.value = generator.generate().password
             }) {
-            Text(text = "Update name")
-        }
-        Button(
-            onClick = {
-                tesor.value = tesor.value + test.value
-            }) {
-            Text(text = "Update")
+            Text(text = "GENERATE")
         }
     }
 }
 
-@Preview(showBackground = true)
 @Composable
-fun DefaultPreview() {
+fun DefaultPreview(generator: DefaultGenerator) {
     PocketPasswordsTheme {
-        Greeting(-2)
+        Greeting(generator)
     }
 }
